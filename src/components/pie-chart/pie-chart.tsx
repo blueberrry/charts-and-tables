@@ -6,14 +6,16 @@ import { PieChartProps } from '../../types/types';
  * * Pie chart (Presentational component)
  */
 
-// todo: chart container with title comp
+// TODO: Import colours from tailwind theme
+// TODO: h2/h3 title component
+// TODO:
 
 export function PieChart({ data, title }: PieChartProps) {
   return (
     <div style={{ border: '1px solid red', width: '100%', height: '100vh' }}>
-      <h2>{title}</h2>
+      <h2 className='text-blue-500'>{title}</h2>
       <ResponsiveContainer width='100%' height='100%'>
-        <RechartsPieChart width={500} height={500}>
+        <RechartsPieChart width={350} height={350}>
           <Pie
             data={data}
             cx='50%'
@@ -49,23 +51,30 @@ const renderCustomizedLabel = ({
   value,
   ...restProps
 }: any) => {
-  console.log('🚀 ~ file: pie-chart.tsx ~ line 52 ~ restProps', restProps);
-  const radius = innerRadius + (outerRadius - innerRadius) * 1.35;
+  const radius = innerRadius + (outerRadius - innerRadius) * 1.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <>
-      <text
-        x={x}
-        y={y}
-        fill={restProps.fill}
-        textAnchor={x > cx ? 'start' : 'end'}
-        dominantBaseline='central'
-        className='flex flex-col'>
-        <tspan>{name}</tspan>
-        <tspan>{value}</tspan>
-      </text>
-    </>
+    <text x={x} y={y} fill={restProps.fill} dominantBaseline='central'>
+      <tspan x={x > cx ? x : x - 20} className='text-xs'>
+        {name}
+      </tspan>
+      <tspan x={x > cx ? x : x - 20} y={y + 16}>
+        {value}
+      </tspan>
+    </text>
   );
+
+  //   const anchorClass = x > cx ? '-translate-x-1 -translate-y-1' : '-mx-1';
+  // return (
+  //   <foreignObject x={x > cx ? x : x - 20} y={y - 15} width='100' height='100'>
+  //     <div>
+  //       <span style={{ color: restProps.fill }}>{name}</span>
+  //     </div>
+  //     <div>
+  //       <span style={{ color: restProps.fill }}>{value}</span>
+  //     </div>
+  //   </foreignObject>
+  // );
 };
