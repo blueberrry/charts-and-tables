@@ -8,20 +8,21 @@ import { PieChartProps } from '../../types/types';
 
 // TODO: Import colours from tailwind theme
 // TODO: h2/h3 title component
-// TODO:
+// TODO: Colours from theme/set up tailwind theme
+// TODO: Extend tw sizes add xxsm
+// TODO: Add transition to text tag on mount - https://tailwindcss.com/blog/utility-friendly-transitions-with-tailwindui-react
+// TODO: Fetch and transform data with wrapper chat about modifying api
 
 export function PieChart({ data, title }: PieChartProps) {
   return (
     <div style={{ border: '1px solid red', width: '100%', height: '100vh' }}>
       <h2 className='text-blue-500'>{title}</h2>
       <ResponsiveContainer width='100%' height='100%'>
-        <RechartsPieChart width={350} height={350}>
+        <RechartsPieChart width={100} height={100}>
           <Pie
-            data={data}
+            data={data.reverse()}
             cx='50%'
             cy='50%'
-            // labelLine={true}
-            // label
             label={renderCustomizedLabel}
             outerRadius={80}
             fill='#8884d8'
@@ -36,7 +37,7 @@ export function PieChart({ data, title }: PieChartProps) {
   );
 }
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; //todo: from theme
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; // todo: from theme
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -55,6 +56,7 @@ const renderCustomizedLabel = ({
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
+  // Label plain text only since SVG text tag
   return (
     <text x={x} y={y} fill={restProps.fill} dominantBaseline='central'>
       <tspan x={x > cx ? x : x - 20} className='text-xs'>
@@ -65,16 +67,4 @@ const renderCustomizedLabel = ({
       </tspan>
     </text>
   );
-
-  //   const anchorClass = x > cx ? '-translate-x-1 -translate-y-1' : '-mx-1';
-  // return (
-  //   <foreignObject x={x > cx ? x : x - 20} y={y - 15} width='100' height='100'>
-  //     <div>
-  //       <span style={{ color: restProps.fill }}>{name}</span>
-  //     </div>
-  //     <div>
-  //       <span style={{ color: restProps.fill }}>{value}</span>
-  //     </div>
-  //   </foreignObject>
-  // );
 };
