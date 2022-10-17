@@ -13,21 +13,20 @@ export function createTheme({
   secondary100,
   secondary400,
   secondary700,
-  success100,
-  success400,
-  success700,
-  error100,
-  error400,
-  error700,
-  info100,
-  info400,
-  info700,
-  warning100,
-  warning400,
-  warning700,
+  neutral100,
+  neutral400,
+  neutral700,
+  highlight100,
+  highlight400,
+  highlight700,
+  success,
+  error,
+  info,
+  warning,
   body100,
   body400,
   body700,
+  bodyInverse,
 }: any) {
   // TODO: Types
   return {
@@ -39,24 +38,25 @@ export function createTheme({
     '--theme-secondary-400': secondary400,
     '--theme-secondary-700': secondary700,
 
-    '--theme-success-100': success100,
-    '--theme-success-400': success400,
-    '--theme-success-700': success700,
+    '--theme-neutral-100': neutral100,
+    '--theme-neutral-400': neutral400,
+    '--theme-neutral-700': neutral700,
 
-    '--theme-error-100': error100,
-    '--theme-error-400': error400,
-    '--theme-error-700': error700,
+    '--theme-highlight-100': highlight100,
+    '--theme-highlight-400': highlight400,
+    '--theme-highlight-700': highlight700,
 
-    '--theme-info-100': info100,
-    '--theme-info-400': info400,
-    '--theme-info-700': info700,
+    '--theme-success': success,
 
-    '--theme-warning-100': warning100,
-    '--theme-warning-400': warning400,
-    '--theme-warning-700': warning700,
+    '--theme-error': error,
+
+    '--theme-info': info,
+
+    '--theme-warning': warning,
 
     '--theme-body-100': body100,
     '--theme-body-400': body400,
     '--theme-body-700': body700,
+    '--theme-body-inverse': bodyInverse,
   };
 }

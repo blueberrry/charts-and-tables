@@ -18,6 +18,8 @@ import { PieChartProps } from '../../types/types';
 
 // TODO: Accessibility hints/ skip to content in main app - set up accessibility testing
 
+// TODO: Add font to project
+
 // width: '100%', height: '100vh'
 export function PieChart({ data, title, type = 'withKey' }: PieChartProps) {
   // ! temp - border red, REMOVE
