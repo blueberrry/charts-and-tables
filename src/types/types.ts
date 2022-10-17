@@ -8,6 +8,7 @@ export type PieChartData = Array<PieChartCell>;
 export interface PieChartProps {
   data: PieChartData;
   title: string;
+  type?: 'withLabel' | 'withKey';
 }
 
 // copied from recharts types
