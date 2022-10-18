@@ -34,7 +34,7 @@ export function BiaxialBarLineChart({ title, data, columns }: BiaxialBarLineChar
             left: 20,
           }}>
           <CartesianGrid stroke='#f5f5f5' />
-          <XAxis dataKey={xAxis['id']} label={xAxis['label']} />
+          <XAxis dataKey={xAxis['id']} />
           <YAxis yAxisId='left' />
           <YAxis yAxisId='right' orientation='right' />
           <Tooltip />

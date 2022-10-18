@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { PieChart as RechartsPieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import { PieChartProps } from '../../../types/types';
 import './pie-chart.css';
@@ -25,8 +25,11 @@ import './pie-chart.css';
 
 // TODO: Resolve tailwind config so we can access it in JavaScript - https://tailwindcss.com/docs/configuration#referencing-in-java-script
 
+// TODO: Should be passed columns same way as bar/line
+
+// TODO: See if we can pass `value` as arbitray columnId and whether it is output in renderCusomizedLabel etc
 // width: '100%', height: '100vh'
-export function PieChart({ data, title, type = 'withLegend' }: PieChartProps) {
+export function PieChart({ title, data, type = 'withLegend' }: PieChartProps) {
   return (
     <div className='max-w-[60rem] justify-center align-center'>
       <h2 className='text-body-400'>{title}</h2>
@@ -39,7 +42,8 @@ export function PieChart({ data, title, type = 'withLegend' }: PieChartProps) {
             label={(props) => renderCustomizedLabel(props, type)}
             labelLine={type === 'withLabel'}
             fill='#8884d8'
-            dataKey='value'>
+            dataKey={'value'}
+            onClick={(e) => console.log('e', e)}>
             {data.map((entry, index) => {
               return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />;
             })}
