@@ -2,10 +2,10 @@ import { createTheme } from './utils';
 
 export const baseTheme = createTheme({
   primary100: 'rgb(241, 170, 80)',
-  primary300: 'rgb(237, 127, 40)',
+  primary400: 'rgb(237, 127, 40)',
   primary700: 'rgb(233, 84, 1)',
   secondary100: 'rgb(0, 162, 184)',
-  secondary300: 'rgb(0, 142, 161)',
+  secondary400: 'rgb(0, 142, 161)',
   secondary700: 'rgb(0, 119, 135)',
   neutral100: 'rgb(245, 246, 247)',
   neutral400: 'rgb(230, 231, 232)',

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { PieChart as RechartsPieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
-import { PieChartProps } from '../../types/types';
+import { PieChartProps } from '../../../types/types';
+import './pie-chart.css';
 
 /**
  * * Pie chart (Presentational component)
@@ -20,23 +21,23 @@ import { PieChartProps } from '../../types/types';
 
 // TODO: Add font to project
 
+// TODO: Storybook should have default container component
+
+// TODO: Resolve tailwind config so we can access it in JavaScript - https://tailwindcss.com/docs/configuration#referencing-in-java-script
+
 // width: '100%', height: '100vh'
-export function PieChart({ data, title, type = 'withKey' }: PieChartProps) {
-  // ! temp - border red, REMOVE
+export function PieChart({ data, title, type = 'withLegend' }: PieChartProps) {
   return (
-    <div className='border-2 border-red-500 w-full h-[30rem]'>
-      <h2 className='text-blue-500'>{title}</h2>
-      <ResponsiveContainer width='100%' height='100%'>
-        <RechartsPieChart width={400} height={400}>
-          {type === 'withKey' && <Legend layout='vertical' verticalAlign='middle' align='right' />}
+    <div className='max-w-[60rem] justify-center align-center'>
+      <h2 className='text-body-400'>{title}</h2>
+      <ResponsiveContainer width='100%' height={400}>
+        <RechartsPieChart>
+          {type === 'withLegend' && <Legend layout='vertical' verticalAlign='middle' align='right' />}
           <Pie
             data={data}
-            cx='50%'
-            cy='50%'
             startAngle={-270} // starts at angle 90
             label={(props) => renderCustomizedLabel(props, type)}
             labelLine={type === 'withLabel'}
-            outerRadius={120}
             fill='#8884d8'
             dataKey='value'>
             {data.map((entry, index) => {
@@ -57,7 +58,7 @@ const renderCustomizedLabel = (
   type: PieChartProps['type']
 ) => {
   let radiusExploder = 1.35;
-  radiusExploder = type === 'withKey' ? 0.5 : 1.35;
+  radiusExploder = type === 'withLegend' ? 0.5 : 1.2;
   const radius = innerRadius + (outerRadius - innerRadius) * radiusExploder;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -76,10 +77,16 @@ const renderCustomizedLabel = (
     );
   }
 
-  if (type === 'withKey') {
+  if (type === 'withLegend') {
     // has key, shows percentages in pie slices
     return (
-      <text x={x} y={y} fill='white' textAnchor={x > cx ? 'start' : 'end'} dominantBaseline='central'>
+      <text
+        x={x}
+        y={y}
+        fill='white'
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline='central'
+        className='text-xs md:text-md'>
         {`${(percent * 100).toFixed(0)}%`}
       </text>
     );

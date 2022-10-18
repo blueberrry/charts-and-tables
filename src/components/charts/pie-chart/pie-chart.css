@@ -1,0 +1,5 @@
+/* * Recharts style override to because custom labels falling outside SVG viewbox */
+
+.recharts-surface {
+  overflow: visible;
+}

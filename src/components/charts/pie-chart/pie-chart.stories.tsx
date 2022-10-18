@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { PieChart } from './pie-chart';
+import { StoryWrapper } from '../../../stories/story-wrapper';
 
 const MOCK_DATA = [
   { name: 'Oct 1', value: 7 },
@@ -21,6 +22,13 @@ export default {
   argTypes: {
     // backgroundColor: { control: 'color' },
   },
+  decorators: [
+    (Story) => (
+      <StoryWrapper>
+        <Story />
+      </StoryWrapper>
+    ),
+  ],
 } as ComponentMeta<typeof PieChart>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -34,8 +42,3 @@ Default.args = {
   // primary: true,
   // label: 'Button',
 };
-
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   // label: 'Button',
-// };
