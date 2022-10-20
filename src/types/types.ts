@@ -1,19 +1,17 @@
 import React from 'react';
 
-interface ChartColumn {
+export interface ChartColumn {
   label: string;
   id: string;
   type?: string; // TODO: Type unneeded from backend
 }
-
-export interface ChartColumns extends Array<ChartColumn> {}
 
 export type PieChartCell = {
   name: string;
   value: number;
 };
 
-export type PieChartData = Array<PieChartCell>;
+export type PieChartData = PieChartCell[];
 
 export interface PieChartProps {
   data: PieChartData;
@@ -48,9 +46,40 @@ export interface BiaxialBarLineChartData extends Array<BiaxialBarLineChartCell> 
 export interface BiaxialBarLineChartProps {
   title: string;
   data: BiaxialBarLineChartData;
-  columns: ChartColumns;
+  columns: ChartColumn[];
 }
 
 export interface StoryWrapperProps {
+  fullHeight?: boolean;
   children: React.ReactNode;
 }
+
+export type PilotActivityCol = {
+  label: string;
+  id: string;
+  type?: string;
+};
+
+export type PilotActivityRow = [string, number];
+export interface PilotActivityResponseData {
+  cols: PilotActivityCol[];
+  rows: PilotActivityRow[];
+}
+
+export interface PilotActivityResponse {
+  status: string;
+  response: PilotActivityResponseData;
+  // other fetch fields
+}
+
+// ! not reusable if tied to presentation table comp
+// export interface PilotActivityProps extends PilotActivityResponseData {
+//   title: string;
+// }
+
+/**
+ * Ideal
+ *
+ * export type PilotActivityRow = { name: String, hours: number }
+ * export type PilotActivityTable = Array<PilotActivityRow>
+ */

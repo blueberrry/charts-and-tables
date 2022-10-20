@@ -28,6 +28,8 @@ import './pie-chart.css';
 // TODO: Should be passed columns same way as bar/line
 
 // TODO: See if we can pass `value` as arbitray columnId and whether it is output in renderCusomizedLabel etc
+
+// TODO: Handle click prop for pie slice (+ storybook test)
 // width: '100%', height: '100vh'
 export function PieChart({ title, data, type = 'withLegend' }: PieChartProps) {
   return (
