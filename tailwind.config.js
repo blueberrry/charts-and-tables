@@ -2,6 +2,20 @@
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  safelist: [
+    {
+      pattern: /grid-cols-./,
+      variants: ['sm', 'md', 'lg'],
+    },
+    {
+      pattern: /gap-./,
+      variants: ['sm', 'md', 'lg'],
+    },
+    {
+      pattern: /grid-rows-./,
+      variants: ['sm', 'md', 'lg'],
+    },
+  ],
   theme: {
     colors: {
       // colours with contrast strength value 50 - 900

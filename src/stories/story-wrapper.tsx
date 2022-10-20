@@ -10,10 +10,14 @@ import { StoryWrapperProps } from '../types/types';
 
 // TODO: Delete default storybook stories in this folder and keep just this file
 
-export function StoryWrapper({ children }: StoryWrapperProps) {
+// TODO: Might be better to store in .storybook folder or rename to storycomponents
+
+export function StoryWrapper({ fullHeight = false, children }: StoryWrapperProps) {
   useEffect(() => {
     applyTheme(baseTheme);
   }, []);
 
-  return <div className='w-full justify-center align-center'>{children}</div>;
+  if (fullHeight) return <div className='w-full h-[100vh] justify-center content-center'>{children}</div>;
+
+  return <div className='w-full justify-center content-center'>{children}</div>;
 }

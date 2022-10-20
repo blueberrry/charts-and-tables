@@ -9,6 +9,12 @@ function App() {
     applyTheme(baseTheme);
   }, []);
 
+  // TODO: React suspense, data fetching. - At the moment we can just use basic fetch but react query/graph ql and mob x are good options,
+  // TODO: Date/time picker
+  // TODO: Font
+  // TODO: Screen
+  // TODO: Storybook multiple components
+  // TODO: Hosting
   return (
     <div className='bg-primary-400 h-[100vh]'>
       <header className='bg-secondary-400 h-[100px]'>
